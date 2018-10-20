@@ -53,4 +53,9 @@ describe("User Spec", function () {
         expect(data.token).to.not.be.null;
     });
 
+    after(()=>{
+        mongoose.disconnect();
+        process.exit();
+    })
+
 });
