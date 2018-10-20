@@ -3,6 +3,8 @@ Typescript, Express.js and JWT integration with mongo db.
 
 An Express.js project implemented using Typescript with strongly typed objects and JWT integration with mongo db.:
 
+[![Build Status](https://travis-ci.com/rjmacarthy/express-typescript-starter-jwt.svg?branch=master)](https://travis-ci.com/rjmacarthy/express-typescript-starter-jwt)
+
 # Installation
 
 Clone the repository
