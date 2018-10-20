@@ -1,5 +1,8 @@
 language: nodejs
 
+before_install:
+- npm install -g typescript
+
 before_script:
   - npm run build
 
