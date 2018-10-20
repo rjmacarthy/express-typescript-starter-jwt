@@ -8,7 +8,7 @@ export default class Config {
 	public static useMongo: boolean = true;
 	public static jwtSecret = process.env.JWT_SECRET || 'thisisasecret';
 	public static mongodb = process.env.NODE_ENV === 'build' ? 
-	'mongodb://mongo:27017/express-typescript-starter-authentication' : 
+	'mongodb://localhost:27017/express-typescript-starter-authentication' : 
 	'mongodb://localhost:27017/express-typescript-starter-authentication';
 	public static globFiles(location: string): string[] {
 		return union([], sync(location));
