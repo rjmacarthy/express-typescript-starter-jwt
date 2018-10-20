@@ -1,6 +1,7 @@
 language: nodejs
 
 before_install:
+- npm install
 - npm install -g typescript
 
 before_script:
