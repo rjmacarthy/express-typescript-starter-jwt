@@ -10,7 +10,7 @@ describe("Policies Spec", function () {
         req.user = null;
     });
 
-    it('it passed not logged in', async () => {
+    it('it passes when logged in', async () => {
         req.user = {};
         loggedInPolicy.isLoggedIn(req, res, () => { 
             expect(true).to.be.true;
