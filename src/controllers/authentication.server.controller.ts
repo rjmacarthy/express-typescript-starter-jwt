@@ -31,17 +31,12 @@ export default class AuthenticationController {
         });
     };
 
-    public async me(req: any, res: Response) {
-        await new Promise((resolve, reject) => {
-            if (req.user) {
-                res.json();
-                resolve();
-            } else {
-                res.status(401).json({ message: 'Unauthorised' });
-                reject();
-            }
-        });
-
+    public me(req: any, res: Response) {
+        if (req.user) {
+            res.json(req.user);
+        } else {
+            res.status(401).json({ message: 'Unauthorised' });
+        }
     }
 
 }

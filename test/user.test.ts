@@ -20,7 +20,8 @@ describe("User Spec", function () {
 
     before(() => {
         mongoose.connect(connectionString, {
-            promiseLibrary: global.Promise
+            promiseLibrary: global.Promise,
+            useNewUrlParser: true
         });
     });
 
@@ -35,7 +36,7 @@ describe("User Spec", function () {
     });
 
     it("Can register a new user", async function () {
-        req.body = {"email": "email@email.com","password": "password"};
+        req.body = { "email": "email@email.com", "password": "password" };
         await authenticationController.register(req, res);
         var data = JSON.parse(res._getData());
         expect(data.password).to.not.be.null;
@@ -45,7 +46,7 @@ describe("User Spec", function () {
     });
 
     it("Can sigin in", async function () {
-        req.body = {"email": "email@email.com","password": "password"};
+        req.body = { "email": "email@email.com", "password": "password" };
         await authenticationController.register(req, res);
         res = mocks.createResponse();
         await authenticationController.signin(req, res);
@@ -53,9 +54,19 @@ describe("User Spec", function () {
         expect(data.token).to.not.be.null;
     });
 
-    after(()=>{
-        mongoose.disconnect();
-        process.exit();
+    it('Can get a user', () => {
+        res = mocks.createResponse();
+        req.user = { "email": "email@email.com" };
+        authenticationController.me(req, res);
+        var data = JSON.parse(res._getData());
+        expect(data.email).to.not.be.null;
+    });
+
+    after(() => {
+        if (process.env.NODE_ENV === 'PROD') {
+            mongoose.disconnect();
+            process.exit();
+        }
     })
 
 });
