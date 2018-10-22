@@ -63,10 +63,8 @@ describe("User Spec", function () {
     });
 
     after(() => {
-        if (process.env.NODE_ENV === 'PROD') {
-            mongoose.disconnect();
-            process.exit();
-        }
+        mongoose.disconnect();
+        process.exit();
     })
 
 });
